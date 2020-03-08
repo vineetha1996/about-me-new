@@ -72,6 +72,26 @@
     <p id="result"></p>
   </div>
 
+  <!-- AJAX -->
+  <div id="demo">
+    <h3>AJAX</h3>
+    <button type="button" onclick="loadDoc()">Tap</button>
+    </div>
+    
+    <script>
+    function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("demo").innerHTML =
+          this.responseText;
+        }
+      };
+      xhttp.open("GET", "ajax.txt", true);
+      xhttp.send();
+    }
+    </script>
+
   <script src="js/resume.min.js"></script>
   <script src="main.js"></script>
 
