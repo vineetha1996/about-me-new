@@ -45,4 +45,3 @@ QUnit.test("TEST first number validation", assert => {
   input.blur()
   assert.strictEqual(warning.innerHTML, 'Invalid input', `Correctly adds warning ${warning}`)
 })
-
