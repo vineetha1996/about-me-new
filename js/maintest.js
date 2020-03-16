@@ -11,6 +11,9 @@ QUnit.test('TEST mult', assert => {
     assert.equal(mult(1, 1), 1, 'Positive integers')
     assert.equal(mult(2, -1), null, 'Negative integers')
     assert.equal(mult(0, 10), null, 'Invalid inputs')
+    assert.equal(mult(2.5, 5.0), 12.5, 'positive float')
+    assert.equal(mult(-2.0, 10), null, 'Invalid inputs')
+    
 })
 
 QUnit.config.autostart = false  // sync = false; start after loading html
