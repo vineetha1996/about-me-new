@@ -18,6 +18,8 @@
   <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.0.0/fetch.min.js"></script>
+
   <!-- Custom styles for this template -->
   <link href="css/resume.min.css" rel="stylesheet">
 
@@ -75,23 +77,30 @@
   <!-- AJAX -->
   <div id="demo">
     <h3>AJAX</h3>
-    <button type="button" onclick="loadDoc()">Tap</button>
-    </div>
+    <div id="output"></div>
+    <button id="trigger">Get a Joke</button>  
+  </div>
     
-    <script>
-    function loadDoc() {
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("demo").innerHTML =
-          this.responseText;
+  <script type="text/javascript">
+    var joker = document.querySelector('#trigger');
+    joker.addEventListener('click',loadJoke)
+    
+    function loadJoke(){
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function(){
+            if(this.readyState==4){
+                if(this.status==200){
+                    var json = JSON.parse(this.responseText);
+                    console.log(json)
+                    var html = '<div><img src="'+json.icon_url+'">'+json.value+'</div>';
+                    document.querySelector('#output').innerHTML = html;
+                }
+            }
         }
-      };
-      xhttp.open("GET", "ajax.txt", true);
-      xhttp.send();
-    }
-    </script>
-
+        ajax.open('GET','https://api.chucknorris.io/jokes/random',true);
+        ajax.send();
+    }  
+  </script>
   <script src="./js/resume.min.js"></script>
   <script src="./js/main.js"></script>
   <script src="./js/maintest.js"></script>

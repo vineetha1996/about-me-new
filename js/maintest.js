@@ -1,5 +1,18 @@
 QUnit.module('MAIN MODULE', {})  // group all these tests together
 
+// QUnit.test('TEST first number validation', assert => {
+//     const input = document.querySelector('#firstNumber').value;
+//     const warning = document.querySelector('#firstWarning').value;
+//     console.log("input :"+input);
+//     console.log("warning :"+warning);
+// })
+
+QUnit.test('TEST mult', assert => {
+    assert.equal(mult(1, 1), 1, 'Positive integers')
+    assert.equal(mult(2, -1), null, 'Negative integers')
+    assert.equal(mult(0, 10), null, 'Invalid inputs')
+})
+
 QUnit.config.autostart = false  // sync = false; start after loading html
 
 window.addEventListener('load', () => {
